@@ -1,1 +1,126 @@
-@charset "UTF-8";
+/* 全体 */
+body {
+	background-color: #EEEEEE;
+	/* 背景色  */
+	text-align: center;
+	/* 中央寄せ */
+	min-width: 900px;
+	/* 最小幅 */
+}
+
+/* ヘッダー、ナビゲーションメニュー、フッター */
+header {
+	background-color: #595959;
+	color: #ffffff;
+	height: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 3px;
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+}
+/*ログインの要素*/
+.logheader {
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	background-color: #595959;
+/*	上記3行は理由がわからない空白が生まれるための対処*/
+	color: #ffffff;
+	height: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 3px;
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+}
+.logtext{
+	padding-top: 80px;
+}
+
+nav {
+	background-color: #666666;
+	margin-bottom: 30px;
+	;
+}
+
+header div {
+	text-align: right;
+	margin-top: 30px;
+	margin-right: 20px;
+
+}
+
+
+/* ヘッダー、ナビゲーション内リンク */
+header a,
+nav a {
+	color: #ffffff;
+
+}
+
+/* ヘッダー内見出し */
+header h1 {
+	font-size: 20pt;
+	margin: 30px;
+}
+
+/* メイン */
+main {
+
+	background-color: #EEEEEE;
+	min-height: 50px;
+	padding: 40px;
+}
+
+form {
+
+	background-color: #ffffff;
+	letter-spacing: 1.5px;
+	width: 500px;
+	height: 35vh;
+	margin: 40px auto;
+	border: 1px solid black;
+	padding: 20px;
+}
+
+/* from内の要素語との距離を確立 */
+form span,
+form input,
+form button {
+	padding: 5px;
+	margin: 10px;
+}
+
+
+form input {
+	width: 330px;
+	height: 30px;
+	font-size: 16px;
+	border: 1px solid black;
+}
+
+/* 送信ボタン */
+button {
+	margin: 30px;
+	/* ボタンの周囲に2pxの外側余白を設定 */
+	padding: 5px 20px;
+	/* ボタンの内側に上下5px、左右20pxの余白を設定 */
+	background-color: rgb(86, 86, 86);
+	/* ボタンの背景色をグレーに設定 */
+	color: #ffffff;
+	/* ボタンの文字色を白に設定 */
+	border: none;
+	/* ボタンの枠線をなくす */
+	width: 150px;
+	/* ボタンの幅を150pxに設定 */
+	cursor: pointer;
+	/* ボタン上にカーソルが乗ったとき、カーソルを指差しアイコンに変更 */
+}
+
+/* 送信ボタン(マウスオーバー時) */
+button:hover {
+	background-color: #f1b2b2;
+}
