@@ -33,6 +33,12 @@ public class User {
         this.name = name;
         this.password = password;
     }
+ // フィールドを初期化するコンストラクタ
+    public User(Integer id, String email,  String password) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+    }
     
     // ゲッターメソッド（フィールドの値を取得する）
     public Integer getId() {

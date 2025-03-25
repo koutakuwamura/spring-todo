@@ -3,24 +3,27 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>ログイン</title>
-	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<title>newAccount</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/header.css">
 </head>
+
 <body>
 	<header>
 		<h1>サンプルタスク</h1>
 	</header>
+
 	<main>
-		<p>ログイン</p>
+		<p>ユーザー新規作成</p>
 		<form action="/login" method="post">
 			<span th:text="${message}" style="color:red"></span><br />
 			<input type="text" name="email" placeholder="メールアドレス" /><br />
 			<input type="text" name="password" placeholder="パスワード" /><br />
-			<button>ログイン</button>
+			<input type="text" name="password" placeholder="パスワード（確認）" /><br />
+			<button>ユーザー新規作成</button>
 		</form>
-		<a href="/users/new">ユーザー新規作成</a>
+
 	</main>
 </body>
 

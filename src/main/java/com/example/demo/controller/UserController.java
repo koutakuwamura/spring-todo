@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.User;
 import com.example.demo.model.Account;
-
+import com.example.demo.repository.UserRepository;
 @Controller
 public class UserController {
 	@Autowired
@@ -18,7 +19,10 @@ public class UserController {
 
 	@Autowired
 	Account account;
-
+	
+	@Autowired
+	UserRepository userRepository;
+	
 	// ログイン画面を表示
 	@GetMapping( "/login" )
 	public String index(
@@ -53,5 +57,25 @@ public class UserController {
 		return "redirect:/tasks";
 	}
 	
+	//新規登録画面の表示
+	@GetMapping("/users/new")
+	public String neww(){
+		return "newAccount";//ここは反映されない
+	}
 	
+	//新規登録処理
+	@PostMapping("/users/add")
+	public String add(
+			@RequestParam(name = "id", defaultValue = "") Integer id,
+			@RequestParam(name = "email", defaultValue = "") String email,
+			@RequestParam(name = "password", defaultValue = "") String password,
+			Model model
+			){
+		//Userオブジェクトの生成
+		User user=new User(id,email,password);
+		//Userテーブルへの反映
+		userRepository.save(user);
+		//「/tasks」にGETでリクエストしなおす
+		return "redirect:/tasks";
+	}
 }

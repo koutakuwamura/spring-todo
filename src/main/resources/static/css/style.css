@@ -15,30 +15,12 @@ header {
 	height: 100px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	margin-bottom: 3px;
 	text-align: left;
 	display: flex;
 	justify-content: space-between;
 }
-/*ログインの要素*/
-.logheader {
-	position: absolute;
-	top: 0;
-	width: 100vw;
-	background-color: #595959;
-/*	上記3行は理由がわからない空白が生まれるための対処*/
-	color: #ffffff;
-	height: 100px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin-bottom: 3px;
-	text-align: left;
-	display: flex;
-	justify-content: space-between;
-}
-.logtext{
-	padding-top: 80px;
-}
+
+
 
 nav {
 	background-color: #666666;
