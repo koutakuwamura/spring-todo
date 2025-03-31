@@ -8,6 +8,7 @@ import org.springframework.web.context.annotation.SessionScope;
 
 public class Account {
 	//フィールド
+	private String name;
 	private String email;
 	private String password;
 
@@ -22,6 +23,10 @@ public class Account {
 	}
 
 	//ゲッター
+	public String getName() {
+		return name;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -31,6 +36,11 @@ public class Account {
 	}
 
 	//セッター
+	public void setName(String name ) {
+		this.name = name;
+	}
+
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}

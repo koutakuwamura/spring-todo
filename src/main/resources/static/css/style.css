@@ -1,81 +1,98 @@
 /* 全体 */
 body {
-	background-color: #EEEEEE;
-	/* 背景色  */
-	text-align: center;
-	/* 中央寄せ */
-	min-width: 900px;
-	/* 最小幅 */
+	background-color: #EEEEEE; /* 背景色 */
+	text-align: center; /* 中央寄せ */
+	min-width: 900px; /* 最小幅 */
 }
 
-/* ヘッダー、ナビゲーションメニュー、フッター */
+/* ヘッダー、ナビゲーションメニュー */
 header {
 	background-color: #595959;
 	color: #ffffff;
-	height: 100px;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	height: 130px;
+	padding: 20px 0 5px;
 	text-align: left;
 	display: flex;
 	justify-content: space-between;
 }
 
-
-
 nav {
 	background-color: #666666;
+	padding: 10px 20px;
+	margin-top: 5px;
 	margin-bottom: 30px;
-	;
+	text-align: left;
 }
 
 header div {
 	text-align: right;
 	margin-top: 30px;
 	margin-right: 20px;
-
 }
 
-
 /* ヘッダー、ナビゲーション内リンク */
-header a,
-nav a {
+header a, nav a {
 	color: #ffffff;
-
 }
 
 /* ヘッダー内見出し */
 header h1 {
 	font-size: 20pt;
-	margin: 30px;
+	margin: 40px;
 }
 
 /* メイン */
 main {
-
 	background-color: #EEEEEE;
 	min-height: 50px;
-	padding: 40px;
+	padding: 0 90px;
 }
 
-form {
+/* テーブル */
+table {
+	width: 90%;
+	min-width: 800px;
+	background-color: white;
+	margin: 30px auto;
+	border-collapse: collapse;
+	border: 1px solid #595959;
+}
 
+.titNo { width: 5%; }
+.titTitle { width: 25%; } /* タイトル列を広げる */
+.titCategory { width: 20%; } /* カテゴリー列を広げる */
+.titClosingDate { width: 15%; } /* 期限列を広げる */
+.titProgress { width: 10%; } /* 進捗列を広げる */
+.titChange, .titDelete { width: 10%; } /* 変更・削除列を広げる */
+
+/* 表のセル */
+th {
+	background-color: #666666;
+	color: #ffffff;
+	padding: 15px; /* より広いパディング */
+	text-align: center;
+	border: 1px solid #595959;
+}
+
+td {
+	border: 1px solid #595959;
+	padding: 10px; /* セルにパディング */
+}
+
+/* フォーム */
+form {
 	background-color: #ffffff;
 	letter-spacing: 1.5px;
 	width: 500px;
-	height: 35vh;
+	height: 40vh;
 	margin: 40px auto;
 	border: 1px solid black;
-	padding: 20px;
 }
 
-/* from内の要素語との距離を確立 */
-form span,
-form input,
-form button {
+form span, form input, form button {
 	padding: 5px;
 	margin: 10px;
 }
-
 
 form input {
 	width: 330px;
@@ -86,20 +103,14 @@ form input {
 
 /* 送信ボタン */
 button {
-	margin: 30px;
-	/* ボタンの周囲に2pxの外側余白を設定 */
-	padding: 5px 20px;
-	/* ボタンの内側に上下5px、左右20pxの余白を設定 */
-	background-color: rgb(86, 86, 86);
-	/* ボタンの背景色をグレーに設定 */
+	width: 99%;
+	height: 42px;
+	background-color: #666666;
 	color: #ffffff;
-	/* ボタンの文字色を白に設定 */
 	border: none;
-	/* ボタンの枠線をなくす */
-	width: 150px;
-	/* ボタンの幅を150pxに設定 */
+	padding: 10px 20px;
+	font-size: 16px;
 	cursor: pointer;
-	/* ボタン上にカーソルが乗ったとき、カーソルを指差しアイコンに変更 */
 }
 
 /* 送信ボタン(マウスオーバー時) */

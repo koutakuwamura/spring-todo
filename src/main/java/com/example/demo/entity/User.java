@@ -26,17 +26,12 @@ public class User {
     public User() {
     }
     
-    // フィールドを初期化するコンストラクタ
-    public User(Integer id, String email, String name, String password) {
-        this.id = id;
+    
+    
+ // idを除外したコンストラクタ（自動採番されるため）
+    public User(String email, String name, String password) {
         this.email = email;
         this.name = name;
-        this.password = password;
-    }
- // フィールドを初期化するコンストラクタ
-    public User(Integer id, String email,  String password) {
-        this.id = id;
-        this.email = email;
         this.password = password;
     }
     

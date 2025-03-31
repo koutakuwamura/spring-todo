@@ -1,4 +1,5 @@
 package com.example.demo.entity;
+
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -10,40 +11,67 @@ import jakarta.persistence.GenerationType;
 //GenerationType は @GeneratedValue で使う戦略（strategy）を指定するための Enum（列挙型）
 import jakarta.persistence.Id;//エンティティの主キー（ユニークなID）を設定するために使う
 import jakarta.persistence.Table;//エンティティをデータベースのどのテーブルと結びつけるかを指定できる
+
 @Entity
 @Table(name = "tasks")
 public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//フィールド
+	//フィールド
 	private Integer id; // タスクID
 	@Column(name = "category_id")
 	private Integer categoryId;//カテゴリーID
 	@Column(name = "user_id")
 	private Integer userId;// ユーザーID
-	@Column(name = "title")
+	
 	private String title;// タイトル
 	@Column(name = "closing_date")
 	private LocalDate closingDate;// 期限
-	@Column(name = "progress")
+	
 	private Integer progress;// 進捗状況
-	@Column(name = "memo")
+	
 	private String memo;//メモ
-//コンストラクタ
+	
+	//コンストラクタ
 	public Task() {
 	}
 
-	public Task(Integer categoryId, Integer userId,String title,LocalDate closingDate, Integer progress,String memo) {
+	public Task(Integer categoryId, Integer userId, String title, LocalDate closingDate, Integer progress,
+			String memo) {
 		this.categoryId = categoryId;
 		this.userId = userId;
-		this.title=title;
+		this.title = title;
 		this.closingDate = closingDate;
-		this.progress=progress;
-		this.memo=memo;
+		this.progress = progress;
+		this.memo = memo;
 	}
+
 	//ゲッター
 	public Integer getId() {
 		return id;
 	}
-	
+
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public LocalDate getClosingDate() {
+		return closingDate;
+	}
+
+	public Integer getProgress() {
+		return progress;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
 }
