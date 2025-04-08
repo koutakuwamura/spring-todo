@@ -58,6 +58,14 @@ public class Task {
 		this.progress = progress;
 		this.memo = memo;
 	}
+	public Task(Integer categoryId,  String title, LocalDate closingDate, Integer progress,
+			String memo) {
+		this.categoryId = categoryId;
+		this.title = title;
+		this.closingDate = closingDate;
+		this.progress = progress;
+		this.memo = memo;
+	}
 
 	//ゲッター
 	public Integer getId() {

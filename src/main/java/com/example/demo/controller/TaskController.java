@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
@@ -56,8 +59,32 @@ public class TaskController {
     }
     
   //新規作成の実行
-//   @PostMapping("/tasks/create")
-//   public String createTask() {
-//   	return "tasks";
-//   }
+   @PostMapping("/tasks/crate")
+   public String storeTask(
+		   @RequestParam(name = "categoryId", defaultValue = "") Integer categoryId,
+		   @RequestParam(name = "title", defaultValue = "") String title,
+			@RequestParam(name = "closingDate", defaultValue = "") LocalDate closingDate,
+			@RequestParam(name = "progress", defaultValue = "") Integer progress,
+			 @RequestParam(name = "memo", defaultValue = "") String memo, 
+			 Model model
+		   ) {
+	   //Taskオブジェクトの生成
+	   Task task = new Task(categoryId,title,closingDate,progress,memo);
+	   //tasksテーブルへの反映
+	   taskRepository.save(task);
+	   //[tasks]にGETでリクエストしなおす
+   	return "redirect:/tasks";
+   }
+   
+   //タスク更新画面表示
+   @GetMapping("/tasks/{id}/edit")
+   public String editTask(@PathVariable("id") Integer id, Model model) {
+	// tasksテーブルをID（主キー）で検索
+			Task task = taskRepository.findById(id).get();
+			model.addAttribute("task", task);
+			return "edittasks";
+		}
+ //タスク更新の実行
+//   @PostMapping("/tasks/update")
+   
 }

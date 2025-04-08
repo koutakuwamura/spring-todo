@@ -43,13 +43,13 @@
 					<td  class="progress"th:text="${task.progressLabel}"></td>
 
 					<td class="update">
-						<form action="/task/change" method="post">
+						<form th:action="@{/tasks/{taskId}/edit(taskId=${task.id})}" method="get">
 							<input type="hidden" name="id" th:value="${task.id}">
 							<button class="task-button">変更</button>
 						</form>
 					</td>
 					<td class="delete">
-						<form action="/task/delete" method="post">
+						<form action="/tasks/delete" method="post">
 							<input type="hidden" name="id" th:value="${task.id}">
 							<button class="task-button">削除</button>
 						</form>
