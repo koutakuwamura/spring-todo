@@ -1,16 +1,21 @@
 /* 全体 */
 body {
-	background-color: #EEEEEE; /* 背景色 */
-	text-align: center; /* 中央寄せ */
-	min-width: 900px; /* 最小幅 */
+	background-color: #EEEEEE;
+	/* 背景色  */
+	text-align: center;
+	/* 中央寄せ */
+	min-width: 900px;
+	/* 最小幅 */
+
 }
 
-/* ヘッダー、ナビゲーションメニュー */
 header {
 	background-color: #595959;
 	color: #ffffff;
-	height: 130px;
-	padding: 20px 0 5px;
+	height: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 3px;
 	text-align: left;
 	display: flex;
 	justify-content: space-between;
@@ -18,100 +23,365 @@ header {
 
 nav {
 	background-color: #666666;
-	padding: 10px 20px;
-	margin-top: 5px;
-	margin-bottom: 30px;
 	text-align: left;
+	padding-left: 20px;
+	height: 30px;
+	padding-top: 5px;
 }
+
 
 header div {
 	text-align: right;
 	margin-top: 30px;
 	margin-right: 20px;
+
 }
 
+
 /* ヘッダー、ナビゲーション内リンク */
-header a, nav a {
+header a {
 	color: #ffffff;
+
+}
+
+nav a {
+	color: #ffffff;
+	margin-right: 10px;
 }
 
 /* ヘッダー内見出し */
 header h1 {
 	font-size: 20pt;
-	margin: 40px;
+	margin: 30px;
 }
+
+
+
+
 
 /* メイン */
 main {
+
 	background-color: #EEEEEE;
 	min-height: 50px;
-	padding: 0 90px;
+	padding: 40px;
+}
+
+.link-left {
+	text-align: left;
+	display: block;
+	padding-left: 55px;
+	/* インライン要素のままだと text-align は適用されない場合がある */
 }
 
 /* テーブル */
 table {
-	width: 90%;
-	min-width: 800px;
+	width: 93%;
 	background-color: white;
-	margin: 30px auto;
+	margin: 10px auto;
 	border-collapse: collapse;
 	border: 1px solid #595959;
 }
 
-.titNo { width: 5%; }
-.titTitle { width: 25%; } /* タイトル列を広げる */
-.titCategory { width: 20%; } /* カテゴリー列を広げる */
-.titClosingDate { width: 15%; } /* 期限列を広げる */
-.titProgress { width: 10%; } /* 進捗列を広げる */
-.titChange, .titDelete { width: 10%; } /* 変更・削除列を広げる */
+/* 表の見出し */
+table th {
+
+	background: #666666;
+	color: #ffffff;
+	height: 45px;
+	/* 各行の高さ */
+}
+
+th.no {
+	width: 5%;
+	height: 30px;
+}
+
+th.title {
+	width: 15%;
+}
+
+th.category {
+	width: 10%;
+}
+
+th.closingDate {
+	width: 10%;
+}
+
+th.progress {
+	width: 10%;
+}
+
+th.update {
+	width: 15%;
+	/* ← 合計が100%を超えていたので調整 */
+}
+
+th.delete {
+	width: 15%;
+}
+
+/* td にも同じ幅を反映するために追加（推奨） */
+td.no {
+	width: 5%;
+}
+
+td.title {
+	width: 15%;
+	text-align: left;
+	padding-left: 10px;
+}
+
+td.category {
+	width: 8%;
+	text-align: left;
+	padding-left: 10px;
+}
+
+td.closingDate {
+	width: 10%;
+}
+
+td.progress {
+	width: 8%;
+	text-align: left;
+	padding-left: 10px;
+}
+
+td.update {
+	width: 15%;
+}
+
+td.delete {
+	width: 15%;
+}
+
+/* 削除 */
 
 /* 表のセル */
+/* ヘッダーのセル */
 th {
 	background-color: #666666;
 	color: #ffffff;
-	padding: 15px; /* より広いパディング */
+
 	text-align: center;
+	/* 中央寄せ */
 	border: 1px solid #595959;
 }
 
 td {
 	border: 1px solid #595959;
-	padding: 10px; /* セルにパディング */
+
 }
 
-/* フォーム */
+/*form*/
 form {
+	letter-spacing: 1.5px;
+}
+
+/*ログイン・ユーザー新規作成系*/
+.login-from {
 	background-color: #ffffff;
 	letter-spacing: 1.5px;
-	width: 500px;
-	height: 40vh;
-	margin: 40px auto;
+	padding: 5px;
+	width: 50%;
+	height: 35vh;
+	margin: 35px auto;
 	border: 1px solid black;
 }
 
-form span, form input, form button {
-	padding: 5px;
-	margin: 10px;
-}
-
-form input {
+.login-from input {
 	width: 330px;
 	height: 30px;
+	margin: 5px;
 	font-size: 16px;
 	border: 1px solid black;
 }
 
-/* 送信ボタン */
+
+.create-user-form {
+
+	background-color: #ffffff;
+	letter-spacing: 1.5px;
+	width: 50%;
+	padding: 5px;
+	height: 45vh;
+	margin: 35px auto;
+	border: 1px solid black;
+
+}
+
+.create-user-form input {
+	width: 330px;
+	height: 30px;
+	margin: 5px;
+	font-size: 16px;
+	border: 1px solid black;
+}
+
+
+
+/* from内の要素語との距離を確立 */
+form span,
+form input,
+form button {
+	padding: 5px;
+	margin: 0px;
+}
+
+form input {
+	height: 25px;
+	width: 99%;
+	padding-left: 10px;
+	font-size: 16px;
+	border: 1px solid black;
+}
+
+/* 新規タスク作成用 */
+.add-table {
+	width: 90%;
+	background-color: white;
+	margin-left: 40px;
+	border-collapse: collapse;
+	border: 1px solid #595959;
+}
+
+.add-category {
+	height: 25px;
+	padding: 5px;
+	width: 180px;
+}
+
+.add-title {
+	height: 25px;
+	padding: 5px;
+	width: 180px;
+}
+
+.add-closingDate {
+	height: 25px;
+	padding: 5px;
+	width: 180px;
+}
+
+.add-closingDate input::placeholder {
+	opacity: 0.5;
+}
+
+
+.add-progress {
+	height: 25px;
+	padding: 5px;
+	width: 170px;
+}
+
+.add-memo {
+	height: 150px;
+	padding: 5px;
+	width: 180px;
+}
+
+.input-memo {
+	height: 140px;
+	width: 99%;
+	font-size: 16px;
+	border: 1px solid black;
+}
+
+.add-from {
+	letter-spacing: 1.5px;
+}
+
+/* radio */
+td.radio-group {
+	border: none;
+	padding-top: 5px;
+}
+
+.radio-group {
+	display: flex;
+	font-size: 16px;
+}
+
+.radio-group label {
+	padding-left: 20px;
+	display: flex;
+	align-items: center;
+	min-width: 110px;
+	justify-content: flex-start;
+	white-space: nowrap;
+	/* 改行防止 */
+}
+
+.radio-group input[type="radio"] {
+	width: 1em;
+	height: 1em;
+	margin-right: 0.4em;
+	vertical-align: middle;
+	/* 念のため追加で安定化 */
+}
+
+
+/*button*/
 button {
+	margin: 30px;
+	/* ボタンの周囲に2pxの外側余白を設定 */
+	padding: 5px 20px;
+	/* ボタンの内側に上下5px、左右20pxの余白を設定 */
+	background-color: rgb(86, 86, 86);
+	/* ボタンの背景色をグレーに設定 */
+	color: #ffffff;
+	/* ボタンの文字色を白に設定 */
+	border: none;
+	/* ボタンの枠線をなくす */
+	/*	width: 150px;*/
+	/* ボタンの幅を150pxに設定 */
+	cursor: pointer;
+	/* ボタン上にカーソルが乗ったとき、カーソルを指差しアイコンに変更 */
+}
+
+.login-button {
+	width: 30%;
+	height: 35px;
+	background-color: #666666;
+	color: #ffffff;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.task-button {
 	width: 99%;
 	height: 42px;
 	background-color: #666666;
 	color: #ffffff;
 	border: none;
-	padding: 10px 20px;
 	font-size: 16px;
 	cursor: pointer;
 }
+
+.add-button {
+	width: 30%;
+	height: 42px;
+	background-color: #666666;
+	color: #ffffff;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+
+/*.add-from input {*/
+/*	width: 99%;*/
+/*	height: 33px;*/
+/*}*/
+
+
+/* 送信ボタン */
+
+
+
 
 /* 送信ボタン(マウスオーバー時) */
 button:hover {

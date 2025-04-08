@@ -42,13 +42,14 @@ public class UserController {
 
 	//ログインを実行
 	@PostMapping("/login")
-	public String login(@RequestParam("email") String email,
+	public String login(@RequestParam("name") String name,
+			@RequestParam("email") String email,
 			@RequestParam("password") String password,
 			Model model,
 			HttpSession session) {
 		// 入力チェック
-		if (email.isEmpty() || password.isEmpty()) {
-			model.addAttribute("message", "メールアドレスとパスワードを入力してください");
+		if (name.isEmpty() ||email.isEmpty() || password.isEmpty()) {
+			model.addAttribute("message", "名前とメールアドレスとパスワードを入力してください");
 			return "login";
 		}
 
@@ -60,7 +61,7 @@ public class UserController {
 		}
 
 		// ログイン成功処理
-		session.setAttribute("userEmail", email);
+		account.setName(name);
 		return "redirect:/tasks";
 	}
 

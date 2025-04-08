@@ -16,13 +16,14 @@
 
 	<main>
 		<p>ユーザー新規作成</p>
-		<form action="/users/add" method="post">
+		<form action="/users/add" method="post" class="create-user-form">
+
 			<span th:text="${message}" style="color:red"></span><br />
 			<input type="text" name="name" placeholder="名前" /><br />
 			<input type="text" name="email" placeholder="メールアドレス" /><br />
 			<input type="text" name="password" placeholder="パスワード" /><br />
 			<input type="text" name="password" placeholder="パスワード（確認）" /><br />
-			<button>新規作成</button>
+			<button class="login-button">新規作成</button>
 		</form>
 	</main>
 </body>

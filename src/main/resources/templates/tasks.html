@@ -2,61 +2,62 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title>サンプルタスク</title>
-    <link rel="stylesheet" type="text/css" href="/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>サンプルタスク</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-    <header th:replace="header"></header>
+	<header th:replace="header"></header>
 
-    <nav>
-        <a href="/tasks">全タスク</a>
-        <a th:each="c:${categories}" th:href="@{/tasks(categoryId=${c.id})}">
-            <span th:text="${c.name}"></span>
-        </a>
-    </nav>
+	<nav>
+		<a href="/tasks" >全タスク</a>
+		<a th:each="c:${categories}" th:href="@{/tasks(categoryId=${c.id})}">
+			<span th:text="${c.name}"></span>
+		</a>
+	</nav>
 
-    <main>
-      <a href="/tasks">新規作成</a>
+	<main>
+		
+		<a href="/tasks/add" class="link-left">新規タスク作成</a>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>NO</th>
-                    <th>タイトル</th>
-                    <th>カテゴリー</th>
-                    <th>期限</th>
-                    <th>進捗状況</th>
-                    <th>変更</th>
-                    <th>削除</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="task:${tasks}" style="height: 45px;">
-                    <td th:text="${task.id}"></td>
-                    <td class="name" th:text="${task.title}"></td>
-                    <td class="name" th:text="${task.categoryId}"></td>
-                    <td class="name" th:text="${task.closingDate}"></td>
-                    <td class="name" th:text="${task.progress}"></td>
+		<table>
 
-                    <td>
-                        <form action="/task/change" method="post">
-                            <input type="hidden" name="id" th:value="${task.id}">
-                            <button>変更</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="/task/delete" method="post">
-                            <input type="hidden" name="id" th:value="${task.id}">
-                            <button>削除</button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
+			<tr>
+				<th class="no">NO</th>
+				<th class="title">タイトル</th>
+				<th class="category">カテゴリー</th>
+				<th class="closingDate">期限</th>
+				<th class="progress">進捗状況</th>
+				<th class="update">変更</th>
+				<th class="delete">削除</th>
+			</tr>
+
+			
+				<tr th:each="task:${tasks}" style="height: 45px;">
+					<td class="no"th:text="${task.id}"></td>
+					<td class="title"th:text="${task.title}"></td>
+					<td class="category" th:text="${task.categoryName}"></td>
+					<td  class="closingDate"th:text="${#temporals.format(task.closingDate, 'yyyy/MM/dd')}"></td>
+					<td  class="progress"th:text="${task.progressLabel}"></td>
+
+					<td class="update">
+						<form action="/task/change" method="post">
+							<input type="hidden" name="id" th:value="${task.id}">
+							<button class="task-button">変更</button>
+						</form>
+					</td>
+					<td class="delete">
+						<form action="/task/delete" method="post">
+							<input type="hidden" name="id" th:value="${task.id}">
+							<button class="task-button">削除</button>
+						</form>
+					</td>
+				</tr>
+			
+		</table>
+	</main>
 </body>
 
 </html>

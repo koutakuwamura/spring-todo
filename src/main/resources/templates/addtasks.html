@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>サンプルタスク</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="header">
+		
+	</header>
+	<hr>
+	<main>
+		<div class="link-left">新規タスク作成</div>
+		<form action="/tasks/crate" method="post" class="add-from">
+			<table border="1" class="add-table">
+				<tr>
+					<th class="add-category">カテゴリー</th>
+					<td class="radio-group">
+						<label>
+							<input type="radio" name="categoryId" value="1"> 仕事
+						</label>
+						<label>
+							<input type="radio" name="categoryId" value="2"> 個人
+						</label>
+						<label>
+							<input type="radio" name="categoryId" value="3"> その他
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<th class="add-title">タイトル</th>
+					<td>
+						<input type="text" name="title">
+					</td>
+				</tr>
+				<tr>
+					<th class="add-closingDate">期限</th>
+					<td>
+						<input type="text" name="closingDate" placeholder="----/--/--" maxlength="10">
+					</td>
+				</tr>
+				<tr>
+					<th class="add-progress">進捗状況</th>
+					<td class="radio-group">
+						<label>
+							<input type="radio" name="progress" value="0">未着手
+						</label>
+						<label>
+							<input type="radio" name="progress" value="1"> 進行中
+						</label>
+						<label>
+							<input type="radio" name="progress" value="2"> 完了
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<th class="add-memo">メモ</th>
+					<td>
+						<input type="text" name="memo" class="input-memo">
+					</td>
+				</tr>
+			</table>
+			<button class="add-button">確認画面へ</button>
+		</form>
+	</main>
+	<hr>
+
+</body>
+
+</html>

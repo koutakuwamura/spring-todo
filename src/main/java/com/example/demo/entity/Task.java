@@ -11,6 +11,9 @@ import jakarta.persistence.GenerationType;
 //GenerationType は @GeneratedValue で使う戦略（strategy）を指定するための Enum（列挙型）
 import jakarta.persistence.Id;//エンティティの主キー（ユニークなID）を設定するために使う
 import jakarta.persistence.Table;//エンティティをデータベースのどのテーブルと結びつけるかを指定できる
+import jakarta.persistence.Transient;
+
+import com.example.demo.util.CategoryMapper;
 
 @Entity
 @Table(name = "tasks")
@@ -31,6 +34,16 @@ public class Task {
 	private Integer progress;// 進捗状況
 	
 	private String memo;//メモ
+	
+	// 進捗ラベルを取得（表示用）
+    @Transient
+    public String getProgressLabel() {
+        return ProgressStatus.fromValue(this.progress).getLabel();
+    }
+    @Transient
+    public String getCategoryName() {
+        return CategoryMapper.getCategoryName(this.categoryId);
+    }
 	
 	//コンストラクタ
 	public Task() {

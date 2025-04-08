@@ -48,4 +48,16 @@ public class TaskController {
 
         return "tasks";
     }
+    
+    //新規作成画面の表示
+    @GetMapping("/tasks/add")
+    public String addTask() {
+    	return "addtasks";
+    }
+    
+  //新規作成の実行
+//   @PostMapping("/tasks/create")
+//   public String createTask() {
+//   	return "tasks";
+//   }
 }
