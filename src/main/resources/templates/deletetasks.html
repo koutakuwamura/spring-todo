@@ -1,0 +1,11 @@
+<h2>本当にこのタスクを削除しますか？</h2>
+
+<p>タイトル: <span th:text="${task.title}"></span></p>
+<p>内容: <span th:text="${task.description}"></span></p>
+
+<form th:action="@{/tasks/{id}/delete(id=${task.id})}" method="post">
+	<button type="submit">削除する</button>
+</form>
+
+<!-- キャンセルして戻る -->
+<a href="/tasks">キャンセル</a>

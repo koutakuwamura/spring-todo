@@ -261,9 +261,9 @@ form input {
 
 .input-title,
 .input-closingDate {
-    width: 99%;
+	width: 99%;
 	height: 25px;
-    padding-left: 10px;
+	padding-left: 10px;
 	border: 1px solid black;
 }
 
@@ -390,8 +390,47 @@ button {
 
 /* 送信ボタン */
 
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+
+}
+
+.modalin {
+	background: white;
+	margin-left: 16%;
+	margin-top: 11%;
+	padding: 20px;
+	width: 55%;
+	height: 25%;
+	
+}
+.modal-button-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* ボタン間のスペース */
+  margin-top: 10px;
+  padding-left: 0px;
+}
 
 
+.btn-modalok {
+	margin: 10px;
+	width: 120px;
+	border: 1px solid black;
+}
+
+.btn-modalng {
+	margin: 10px;
+	width: 120px;border: 1px solid black;
+	background: rgb(255, 255, 255);
+	color: black;
+}
 
 /* 送信ボタン(マウスオーバー時) */
 button:hover {

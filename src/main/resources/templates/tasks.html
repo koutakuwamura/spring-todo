@@ -12,14 +12,14 @@
 	<header th:replace="header"></header>
 
 	<nav>
-		<a href="/tasks" >全タスク</a>
+		<a href="/tasks">全タスク</a>
 		<a th:each="c:${categories}" th:href="@{/tasks(categoryId=${c.id})}">
 			<span th:text="${c.name}"></span>
 		</a>
 	</nav>
 
 	<main>
-		
+
 		<a href="/tasks/add" class="link-left">新規タスク作成</a>
 
 		<table>
@@ -34,30 +34,66 @@
 				<th class="delete">削除</th>
 			</tr>
 
-			
-				<tr th:each="task:${tasks}" style="height: 45px;">
-					<td class="no"th:text="${task.id}"></td>
-					<td class="title"th:text="${task.title}"></td>
-					<td class="category" th:text="${task.categoryName}"></td>
-					<td  class="closingDate"th:text="${#temporals.format(task.closingDate, 'yyyy/MM/dd')}"></td>
-					<td  class="progress"th:text="${task.progressLabel}"></td>
 
-					<td class="update">
-						<form th:action="@{/tasks/{taskId}/edit(taskId=${task.id})}" method="get">
-							<input type="hidden" name="id" th:value="${task.id}">
-							<button class="task-button">変更</button>
-						</form>
-					</td>
-					<td class="delete">
-						<form action="/tasks/delete" method="post">
-							<input type="hidden" name="id" th:value="${task.id}">
-							<button class="task-button">削除</button>
-						</form>
-					</td>
-				</tr>
-			
+			<tr th:each="task:${tasks}" style="height: 45px;">
+				<td class="no" th:text="${task.id}"></td>
+				<td class="title" th:text="${task.title}"></td>
+				<td class="category" th:text="${task.categoryName}"></td>
+				<td class="closingDate" th:text="${#temporals.format(task.closingDate, 'yyyy/MM/dd')}"></td>
+				<td class="progress" th:text="${task.progressLabel}"></td>
+
+				<td class="update">
+					<form th:action="@{/tasks/{taskId}/edit(taskId=${task.id})}" method="get">
+						<input type="hidden" name="id" th:value="${task.id}">
+						<button class="task-button">変更</button>
+					</form>
+				</td>
+				<td class="delete">
+					<form th:action="@{/tasks/{taskId}/delete(taskId=${task.id})}" method="post"
+						th:id="'deleteForm-' + ${task.id}">
+						<input type="hidden" name="id" th:value="${task.id}">
+						<!-- 削除ボタン -->
+						<button class="task-button" type="button"
+							th:onclick="'openModal(' + ${task.id} + ')'">削除</button>
+
+						<!-- モーダル -->
+						<div th:id="'myModal-' + ${task.id}" class="modal">
+
+							<div class="modalin">
+								<p style="text-align: left;">このページの内容</p>
+								<p style="text-align: left;  padding-top: 10px; padding-left: 5px;">タスクを削除します。よろしいですか？</p>
+								<div class="modal-button-row">
+									<button type="button" th:onclick="'confirmDelete(' + ${task.id} + ')'"
+										class="btn-modalok">OK</button>
+									<button type="button" th:onclick="'closeModal(' + ${task.id} + ')'"
+										class="btn-modalng" >キャンセル</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</td>
+			</tr>
+
 		</table>
 	</main>
+	<script>
+		function openModal(taskId) {
+			document.getElementById(`myModal-${taskId}`).style.display = "block";
+		}
+
+		function closeModal(taskId) {
+			document.getElementById(`myModal-${taskId}`).style.display = "none";
+		}
+
+		function confirmDelete(taskId) {
+			const form = document.getElementById(`deleteForm-${taskId}`);
+			if (form) {
+				form.submit(); // モーダルの中で「削除」押されたら送信
+			}
+		}
+	</script>
+
+
 </body>
 
 </html>

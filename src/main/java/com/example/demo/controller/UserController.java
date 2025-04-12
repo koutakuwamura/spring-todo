@@ -48,7 +48,7 @@ public class UserController {
 			Model model,
 			HttpSession session) {
 		// 入力チェック
-		if (name.isEmpty() ||email.isEmpty() || password.isEmpty()) {
+		if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
 			model.addAttribute("message", "名前とメールアドレスとパスワードを入力してください");
 			return "login";
 		}
@@ -69,34 +69,32 @@ public class UserController {
 	@GetMapping("/users/new")
 	public String creat() {
 		return "createUser";
-		
+
 	}
 
 	//新規登録処理
 	@PostMapping("/users/add")
 	public String add(
-			@RequestParam(name = "email", defaultValue = "") String email,
-			@RequestParam(name = "name", defaultValue = "") String name,
-			@RequestParam(name = "password", defaultValue = "") String password,
-			 @RequestParam(name = "password_confirm", defaultValue = "") String passwordConfirm, 
+			@RequestParam(name = "email") String email,
+			@RequestParam(name = "name") String name,
+			@RequestParam(name = "password") String password,
+			@RequestParam(name = "password_confirm") String passwordConfirm,
 			Model model) {
-//		if(name.isEmpty() ||email.isEmpty() || password.isEmpty()|| password_confirm.isEmpty()) {
-//			model.addAttribute("message", "空白があります。入力してください。");
-//			return "createUser";
-//		}
-//		else if (password != password_confirm) {
-//			model.addAttribute("message", "パスワードが一致しません");
-//			return "createUser";
-//		} else {
-			//Userオブジェクトの生成
-		User user = new User(email, name, password);
 
-			//Userテーブルへの反映
+		if (name.isEmpty() || email.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
+			model.addAttribute("message", "空白があります。入力してください。");
+			return "createUser";
+		} else if (!password.equals(passwordConfirm)) {
+			model.addAttribute("message", "パスワードが一致しません");
+			return "createUser";
+		} else {
+			User user = new User(email, name, password);
 			userRepository.save(user);
-			account.setName(name);
-		//}
-		//「/tasks」にGETでリクエストしなおす
-		return "redirect:/tasks";
+
+			 account.setName(name);
+
+			return "redirect:/tasks";
+		}
 	}
 
 }
