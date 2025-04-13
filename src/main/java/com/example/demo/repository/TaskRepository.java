@@ -8,5 +8,6 @@ import com.example.demo.entity.Task;
 
 public interface TaskRepository extends JpaRepository<Task, Integer>   {
 	// SELECT * FROM items WHERE category_id = ?
-	List<Task> findByCategoryId(Integer categoryId);
+	List<Task> findByCategoryIdOrderByIdAsc(Integer categoryId);
+
 }
